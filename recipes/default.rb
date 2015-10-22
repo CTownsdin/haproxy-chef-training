@@ -6,9 +6,17 @@
 
 all_web_nodes = search("node", "role:web")
 
-members = []
+members = {}
 
-# TODO: Convert each web node into an array of hashes
+all_web_nodes.each do |web_node|
+  member = {
+    "hostname" => web_node["cloud"]["public_hostname"],
+    "ipaddress" => web_node["cloud"]["public_ipv4"],
+    "port" => 80,
+    "ssl_port" => 80
+  }
+  member.push(member)
+end
 
 node.default['haproxy']['members'] = members
 
