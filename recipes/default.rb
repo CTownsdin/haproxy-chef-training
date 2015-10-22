@@ -6,7 +6,7 @@
 
 all_web_nodes = search("node", "role:web")
 
-members = {}
+members = []
 
 all_web_nodes.each do |web_node|
   member = {
@@ -15,7 +15,7 @@ all_web_nodes.each do |web_node|
     "port" => 80,
     "ssl_port" => 80
   }
-  member.push(member)
+  members.push(member)
 end
 
 node.default['haproxy']['members'] = members
