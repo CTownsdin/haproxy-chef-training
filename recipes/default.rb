@@ -4,7 +4,8 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-all_web_nodes = search("node", "role:web")
+all_web_nodes = search("node", "role:web AND chef_environment:#{node.chef_environment}")
+# proxy is in prod, so we'll be looking for the prod environment web servers
 
 members = []
 
